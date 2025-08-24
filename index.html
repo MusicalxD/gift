@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Malak! 🎉</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated background stars -->
+    <div class="stars-container" id="starsContainer"></div>
+    
+    <!-- Floating balloons -->
+    <div class="balloons-container" id="balloonsContainer"></div>
+    
+    <!-- Confetti container -->
+    <div class="confetti-container" id="confettiContainer"></div>
+    
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-image">
+                <img src="cat-birthday.png" alt="Cat riding butterfly" class="cat-butterfly-img" id="catImage">
+            </div>
+            <div class="loading-text">
+                <h2 class="loading-title">Get Ready for the Celebration!</h2>
+                <div class="countdown-timer" id="countdownTimer">10</div>
+                <div class="loading-dots">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive hearts/stars container -->
+    <div class="interactive-effects" id="interactiveEffects"></div>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <!-- Hero section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title" id="heroTitle">
+                    <span class="glowing-text">Happy Birthday</span>
+                    <span class="name-text glowing-text">
+                        <span class="name-letter-m">M<span class="crown">👑</span></span>alak
+                    </span>
+                    <span class="celebration-emoji">🎂✨</span>
+                </h1>
+                <p class="hero-subtitle">It's your special day! 🎉</p>
+                <div class="hero-date" id="heroDate">7th September 2025</div>
+                
+                <!-- Surprise button -->
+                <button class="surprise-btn" id="surpriseBtn">
+                    Click for a Surprise 🎉
+                </button>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Surprise popup modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content" id="modalContent">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="surprise-message">
+                <h2 class="surprise-title">🎉 Happy Birthday Malak! 🎉</h2>
+                <p class="surprise-text">
+                    كل سنة وأنتي طيبة يا أحلى باشا، ياللي دايما مصدعانا بس منقدرش نستغنى منها 😂🎀
+                </p>
+                <div class="birthday-wishes">
+                    <p>✨ May your dreams come true ✨</p>
+                    <p>🌟 Shine bright like the star you are 🌟</p>
+                    <p>💖 Sending you love and birthday hugs 💖</p>
+                </div>
+                <div class="celebration-emojis">🎂🎈🎁🌸🦄🌈</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
