@@ -101,7 +101,7 @@ body {
     font-family: 'Poppins', sans-serif;
     font-size: clamp(3rem, 8vw, 4.5rem);
     font-weight: 700;
-    color: #ffd700;
+    color: #F9E576;
     text-shadow: 
         0 0 20px rgba(255, 215, 0, 0.8),
         0 0 40px rgba(255, 215, 0, 0.6),
@@ -383,7 +383,7 @@ body {
 }
 
 .hero-title {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.7rem;
     line-height: 1.2;
 }
 
@@ -407,11 +407,11 @@ body {
 
 .name-text {
     font-size: clamp(3.5rem, 12vw, 6rem);
-    color: #ffd700;
+    color: #F1E399;
     text-shadow: 
-        0 0 15px rgba(255, 215, 0, 0.8),
-        0 0 30px rgba(255, 215, 0, 0.6),
-        0 0 45px rgba(255, 215, 0, 0.4);
+        0 0 15px rgba(246, 220, 79, 0.8),
+        0 0 30px rgba(141, 119, 6, 0.6),
+        0 0 45px rgba(88, 82, 47, 0.4);
     animation: glow-gold 2s ease-in-out infinite alternate;
     position: relative;
 }
@@ -423,7 +423,7 @@ body {
 
 .crown {
     position: absolute;
-    top: -20px;
+    top: -10px;
     left: 50%;
     transform: translateX(-50%) rotate(-15deg);
     font-size: clamp(1.5rem, 5vw, 2.5rem);
@@ -454,10 +454,10 @@ body {
 
 @keyframes crown-hover {
     0%, 100% {
-        top: -20px;
+        top: -10px;
     }
     50% {
-        top: -30px;
+        top: -20px;
     }
 }
 
