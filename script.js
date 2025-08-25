@@ -444,6 +444,35 @@ document.addEventListener('visibilitychange', () => {
     }
 });
 
+const flyingLettersContainer = document.getElementById("flyingLetters");
+const letters = "I Love You".split("");
+
+function createFlyingLetter() {
+    const letter = document.createElement("span");
+    letter.className = "letter";
+    letter.textContent = letters[Math.floor(Math.random() * letters.length)];
+
+    // random start position
+    letter.style.left = Math.random() * window.innerWidth + "px";
+    letter.style.top = Math.random() * window.innerHeight + "px";
+
+    // random fly distance
+    const xMove = (Math.random() - 0.5) * 500 + "px";
+    const yMove = (Math.random() - 0.5) * 500 + "px";
+    letter.style.setProperty("--x-move", xMove);
+    letter.style.setProperty("--y-move", yMove);
+
+    flyingLettersContainer.appendChild(letter);
+
+    // remove after animation
+    setTimeout(() => {
+        if (letter.parentNode) letter.remove();
+    }, 6000);
+}
+
+// spawn letters repeatedly
+setInterval(createFlyingLetter, 800);
+
 // Service worker registration for offline support (optional enhancement)
 if ('serviceWorker' in navigator && window.location.protocol === 'https:') {
     window.addEventListener('load', () => {
