@@ -297,6 +297,29 @@ body {
     }
 }
 
+/* Fireworks explosion styles */
+.fireworks-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 99999;
+}
+
+.firework {
+    position: absolute;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    opacity: 0.85;
+    animation: firework-explode 1.2s ease-out forwards;
+}
+
+@keyframes firework-explode {
+    0% { transform: scale(0.5) translateY(0); opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: scale(1.2) translateY(-120px); opacity: 0; }
+}
+
 /* Interactive effects */
 .interactive-effects {
     position: fixed;
@@ -697,6 +720,17 @@ body {
     animation: bounce 2s infinite;
 }
 
+/* Custom style for loading sentences */
+.loading-sentence {
+    font-family: 'Caveat', cursive;
+    font-size: 2.2rem;
+    color: #ff69b4;
+    font-weight: 700;
+    text-shadow: 0 0 10px #fff, 0 0 20px #ffd700;
+    margin-bottom: 0.5rem;
+    transition: all 0.4s;
+    display: block;
+}
 
 /* Loading screen responsive design */
 @media (max-width: 480px) {
