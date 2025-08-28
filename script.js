@@ -554,13 +554,13 @@ function showFireworksExplosion() {
     container.innerHTML = '';
 
     const colors = ['#FFD700', '#FF69B4', '#9b59b6', '#F9E576', '#00eaff', '#ff6f00', '#fff', '#00ff99', '#ff1493', '#8a2be2'];
-    const explosionCount = 12 + Math.floor(Math.random() * 6); // 12-17 explosions
+    const explosionCount = 8 + Math.floor(Math.random() * 6); // 8-14 explosions
 
     for (let e = 0; e < explosionCount; e++) {
         // Random explosion center
         const centerX = Math.random() * window.innerWidth * 0.8 + window.innerWidth * 0.1;
         const centerY = Math.random() * window.innerHeight * 0.6 + window.innerHeight * 0.2;
-        const particles = 12 + Math.floor(Math.random() * 6); // 12-17 particles
+        const particles = 8 + Math.floor(Math.random() * 6); // 8-14 particles
 
         for (let i = 0; i < particles; i++) {
             const firework = document.createElement('div');
