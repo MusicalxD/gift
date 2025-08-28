@@ -11,6 +11,15 @@ const heroDate = document.getElementById('heroDate');
 const loadingScreen = document.getElementById('loadingScreen');
 const catImage = document.getElementById('catImage');
 const countdownTimer = document.getElementById('countdownTimer');
+const fireworksContainer = document.getElementById('fireworksContainer');
+const birthdayMusic = document.getElementById('birthdayMusic');
+
+function playBirthdayMusic() {
+    if (birthdayMusic) {
+        birthdayMusic.volume = 0.5; // Optional: set volume
+        birthdayMusic.play().catch(() => {});
+    }
+}
 
 // Animation state and performance tracking
 let animationId;
@@ -261,38 +270,60 @@ function optimizePerformance() {
  * Controls the loading screen sequence with 10-second countdown
  */
 function handleLoadingScreen() {
-    // Show loading screen initially
     if (loadingScreen && countdownTimer) {
         loadingScreen.style.display = 'flex';
-        let countdown = 10;
-        
-        // Update countdown every second
-        const countdownInterval = setInterval(() => {
-            countdown--;
+
+        // Your 5 sentences
+        const sentences = [
+            "صحيح انك رخمة بس ماشي 😒😜",
+            "بس قولت عادي عشان ملك وضحكتها 😎😁",
+            "هدية بسيطه ان شاء الله تعجبك 🎂",
+            "بس برضوا هفضل قارفك ف حياتك 😂😂",
+            "يا بتاعتة الأوبراتيف 😜😂"
+        ];
+
+        let step = 0;
+
+        // Show sentences one by one, then start countdown
+        function showNextSentence() {
+            if (step < sentences.length) {
+                countdownTimer.innerHTML = `<span class="loading-sentence">${sentences[step]}</span>`;
+                step++;
+                setTimeout(showNextSentence, 5000); // 5s per sentence
+                playBirthdayMusic(); // Start music here
+            } else {
+                startCountdown();
+            }
+        }
+
+        function startCountdown() {
+            let countdown = 5;
             countdownTimer.textContent = countdown;
-            
-            // At 3 seconds remaining, start fading the cat image
-            if (countdown === 3) {
-                if (catImage) {
-                    catImage.style.animation += ', fade-subtle 3s ease-out forwards';
+            const countdownInterval = setInterval(() => {
+                countdown--;
+                countdownTimer.textContent = countdown >= 0 ? countdown : '';
+                // Fade cat image at 3
+                if (countdown === 3) {
+                    if (catImage) {
+                        catImage.style.animation += ', fade-subtle 3s ease-out forwards';
+                    }
                 }
-            }
-            
-            // When countdown reaches 0, hide loading screen and show main content
-            if (countdown === 0) {
-                clearInterval(countdownInterval);
-                
-                setTimeout(() => {
-                    loadingScreen.classList.add('fade-out');
-                    document.body.classList.add('content-visible');
-                    
-                    // Remove loading screen from DOM after transition
+                // Fireworks and main content at 0
+                if (countdown === 0) {
+                    clearInterval(countdownInterval);
+                    showFireworksExplosion();
                     setTimeout(() => {
-                        loadingScreen.style.display = 'none';
-                    }, 1000);
-                }, 500); // Small delay after countdown reaches 0
-            }
-        }, 1000);
+                        loadingScreen.classList.add('fade-out');
+                        document.body.classList.add('content-visible');
+                        setTimeout(() => {
+                            loadingScreen.style.display = 'none';
+                        }, 1000);
+                    }, 1200);
+                }
+            }, 1000);
+        }
+
+        showNextSentence();
     }
 }
 
@@ -513,3 +544,54 @@ function cleanup() {
 
 // Cleanup on page unload
 window.addEventListener('beforeunload', cleanup);
+
+/**
+ * Shows multiple fireworks explosions with effects
+ */
+function showFireworksExplosion() {
+    const container = document.getElementById('fireworksContainer');
+    if (!container) return;
+    container.innerHTML = '';
+
+    const colors = ['#FFD700', '#FF69B4', '#9b59b6', '#F9E576', '#00eaff', '#ff6f00', '#fff', '#00ff99', '#ff1493', '#8a2be2'];
+    const explosionCount = 18 + Math.floor(Math.random() * 15); // 18-33 explosions
+
+    for (let e = 0; e < explosionCount; e++) {
+        // Random explosion center
+        const centerX = Math.random() * window.innerWidth * 0.8 + window.innerWidth * 0.1;
+        const centerY = Math.random() * window.innerHeight * 0.6 + window.innerHeight * 0.2;
+        const particles = 23 + Math.floor(Math.random() * 15); // 23-37 particles
+
+        for (let i = 0; i < particles; i++) {
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+            firework.style.left = centerX + 'px';
+            firework.style.top = centerY + 'px';
+
+            // Random angle and distance
+            const angle = (Math.PI * 2 * i) / particles;
+            const distance = 80 + Math.random() * 80;
+            const x = Math.cos(angle) * distance;
+            const y = Math.sin(angle) * distance;
+
+            firework.style.transform = `translate(${x}px, ${y}px) scale(${0.7 + Math.random() * 0.6})`;
+            firework.style.animationDelay = (Math.random() * 0.4) + 's';
+
+            container.appendChild(firework);
+
+            // Sparkle effect: add a glowing shadow
+            firework.style.boxShadow = `0 0 18px 4px ${firework.style.background}, 0 0 6px 2px #fff`;
+
+            // Remove after animation
+            setTimeout(() => {
+                if (firework.parentNode) firework.parentNode.removeChild(firework);
+            }, 1400 + Math.random() * 400);
+        }
+    }
+
+    // Hide fireworks container after animation
+    setTimeout(() => {
+        container.innerHTML = '';
+    }, 2000);
+}
