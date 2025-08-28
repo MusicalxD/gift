@@ -289,9 +289,9 @@ function handleLoadingScreen() {
             if (step < sentences.length) {
                 countdownTimer.innerHTML = `<span class="loading-sentence">${sentences[step]}</span>`;
                 step++;
-                setTimeout(showNextSentence, 5000); // 5s per sentence
-                playBirthdayMusic(); // Start music here
+                setTimeout(showNextSentence, 4000); // 4s per sentence
             } else {
+                playBirthdayMusic(); // Start music here
                 startCountdown();
             }
         }
@@ -554,13 +554,13 @@ function showFireworksExplosion() {
     container.innerHTML = '';
 
     const colors = ['#FFD700', '#FF69B4', '#9b59b6', '#F9E576', '#00eaff', '#ff6f00', '#fff', '#00ff99', '#ff1493', '#8a2be2'];
-    const explosionCount = 18 + Math.floor(Math.random() * 15); // 18-33 explosions
+    const explosionCount = 12 + Math.floor(Math.random() * 6); // 12-17 explosions
 
     for (let e = 0; e < explosionCount; e++) {
         // Random explosion center
         const centerX = Math.random() * window.innerWidth * 0.8 + window.innerWidth * 0.1;
         const centerY = Math.random() * window.innerHeight * 0.6 + window.innerHeight * 0.2;
-        const particles = 23 + Math.floor(Math.random() * 15); // 23-37 particles
+        const particles = 12 + Math.floor(Math.random() * 6); // 12-17 particles
 
         for (let i = 0; i < particles; i++) {
             const firework = document.createElement('div');
