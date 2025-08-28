@@ -290,8 +290,8 @@ function handleLoadingScreen() {
                 countdownTimer.innerHTML = `<span class="loading-sentence">${sentences[step]}</span>`;
                 step++;
                 setTimeout(showNextSentence, 4000); // 4s per sentence
-            } else {
                 playBirthdayMusic(); // Start music here
+            } else {
                 startCountdown();
             }
         }
