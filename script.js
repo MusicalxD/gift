@@ -290,7 +290,7 @@ function handleLoadingScreen() {
                 countdownTimer.innerHTML = `<span class="loading-sentence">${sentences[step]}</span>`;
                 step++;
                 setTimeout(showNextSentence, 4000); // 4s per sentence
-                
+                playBirthdayMusic(); // Start music here
             } else {
                 
                 startCountdown();
@@ -316,7 +316,6 @@ function handleLoadingScreen() {
                     setTimeout(() => {
                         loadingScreen.classList.add('fade-out');
                         document.body.classList.add('content-visible');
-                        playBirthdayMusic(); // Start music here
                         setTimeout(() => {
                             loadingScreen.style.display = 'none';
                         }, 1000);
